@@ -1,4 +1,5 @@
 using ContosoPizza.Services;
+using ContosoPizza.Data;
 // Additional using declarations
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Add the PizzaContext
+builder.Services.AddSqlite<PizzaContext>("Data Source=ContosoPizza.db");
 
 // Add the PromotionsContext
 
@@ -31,3 +33,9 @@ app.MapControllers();
 app.MapGet("/", () => @"Contoso Pizza management API. Navigate to /swagger to open the Swagger test UI.");
 
 app.Run();
+
+
+
+
+
+//Закончить https://learn.microsoft.com/ru-ru/training/modules/persist-data-ef-core/3-migrations
